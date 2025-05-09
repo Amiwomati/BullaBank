@@ -24,33 +24,33 @@ const LoginScreen = () => {
     <div className="login-container">
       <div className="login-form-container">
         <div className="login-header">
-          <h1>Welcome to BullaBank</h1>
-          <p>Enter your credentials to access your account</p>
+          <h1>Bienvenido a BullaBank</h1>
+          <p>Ingrese sus credenciales para acceder a su cuenta</p>
         </div>
 
         {error && <div className="error-message">{error}</div>}
 
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Correo Electrónico</label>
             <input
               type="email"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
+              placeholder="Ingrese su correo electrónico"
               required
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Contraseña</label>
             <input
               type="password"
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
+              placeholder="Ingrese su contraseña"
               required
             />
           </div>
@@ -59,21 +59,21 @@ const LoginScreen = () => {
             <div className="remember-forgot">
               <div className="remember-me">
                 <input type="checkbox" id="remember" />
-                <label htmlFor="remember">Remember me</label>
+                <label htmlFor="remember">Recordarme</label>
               </div>
               <a href="#forgot" className="forgot-link">
-                Forgot Password?
+                ¿Olvidaste tu contraseña?
               </a>
             </div>
 
             <button type="submit" className="login-button">
-              Log In
+              Ingresar
             </button>
           </div>
         </form>
 
         <div className="signup-link">
-          Don't have an account? <a href="#signup">Sign up</a>
+          ¿No tienes cuenta? <a href="#signup">Crear cuenta</a>
         </div>
       </div>
     </div>
