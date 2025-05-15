@@ -1,8 +1,122 @@
-# React + Vite
+# BullaBank - Aplicación Bancaria
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+BullaBank es una aplicación web bancaria moderna desarrollada con React, Firebase Authentication y Firestore. Ofrece una interfaz de usuario intuitiva y segura para gestionar cuentas bancarias, realizar transferencias y administrar finanzas personales.
 
-Currently, two official plugins are available:
+![BullaBank Dashboard](https://via.placeholder.com/800x400?text=BullaBank+Dashboard)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Características
+
+- **Autenticación segura**: Registro e inicio de sesión de usuarios mediante Firebase Authentication
+- **Dashboard bancario**: Interfaz moderna con resumen de cuentas y últimas transacciones
+- **Transferencias**: Sistema para realizar transferencias entre cuentas
+- **Base de datos en tiempo real**: Almacenamiento y sincronización de datos con Firestore
+- **Diseño responsivo**: Experiencia de usuario optimizada para dispositivos móviles y de escritorio
+
+## Requisitos previos
+
+- Node.js (v14.0.0 o superior)
+- npm (v6.0.0 o superior)
+- Cuenta de Firebase (para autenticación y base de datos)
+
+## Instalación
+
+Sigue estos pasos para configurar el proyecto en tu entorno local:
+
+1. **Clonar el repositorio**
+
+```bash
+git clone https://github.com/tu-usuario/bullabank.git
+cd bullabank
+```
+
+2. **Instalar dependencias**
+
+```bash
+npm install
+```
+
+3. **Configurar Firebase**
+
+- Crea un proyecto en [Firebase Console](https://console.firebase.google.com/)
+- Habilita Authentication y Firestore en tu proyecto
+- Crea un archivo `.env` en la raíz del proyecto con las siguientes variables:
+
+```
+VITE_FIREBASE_API_KEY=tu-api-key
+VITE_FIREBASE_AUTH_DOMAIN=tu-auth-domain
+VITE_FIREBASE_PROJECT_ID=tu-project-id
+VITE_FIREBASE_STORAGE_BUCKET=tu-storage-bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=tu-messaging-sender-id
+VITE_FIREBASE_APP_ID=tu-app-id
+```
+
+## Ejecución local
+
+Para ejecutar la aplicación en modo desarrollo:
+
+```bash
+npm run dev
+```
+
+La aplicación estará disponible en `http://localhost:5173/`
+
+Para construir la aplicación para producción:
+
+```bash
+npm run build
+```
+
+Para previsualizar la versión de producción:
+
+```bash
+npm run preview
+```
+
+## Estructura del proyecto
+
+```
+bullabank/
+├── public/             # Archivos estáticos
+├── src/                # Código fuente
+│   ├── contexts/       # Contextos de React (Firebase, Auth)
+│   ├── Dashboard/      # Componentes del Dashboard
+│   ├── Firebase/       # Configuración de Firebase
+│   ├── LoginScreen/    # Componentes de inicio de sesión
+│   ├── RegisterScreen/ # Componentes de registro
+│   ├── App.jsx         # Componente principal
+│   └── main.jsx        # Punto de entrada
+├── .env                # Variables de entorno (no incluido en el repositorio)
+└── package.json        # Dependencias y scripts
+```
+
+## Equipo de desarrollo
+
+### Liderazgo
+
+- **María Pérez** - _CEO & Fundadora_ - Visión estratégica y dirección del proyecto
+- **Carlos Rodríguez** - _CTO_ - Arquitectura técnica y decisiones tecnológicas
+
+### Desarrollo Frontend
+
+- **Ana González** - _Lead Frontend Developer_ - Especialista en React y diseño de UI/UX
+- **Juan Martínez** - _Frontend Developer_ - Implementación de componentes y testing
+- **Sofía López** - _UI/UX Designer_ - Diseño visual y experiencia de usuario
+
+### Desarrollo Backend
+
+- **Diego Sánchez** - _Lead Backend Developer_ - Especialista en Firebase y seguridad
+- **Valentina Torres** - _Backend Developer_ - Integración de APIs y bases de datos
+- **Mateo Fernández** - _DevOps Engineer_ - Infraestructura y despliegue
+
+### Calidad y Testing
+
+- **Lucía Ramírez** - _QA Lead_ - Estrategia de pruebas y control de calidad
+- **Gabriel Castro** - _QA Analyst_ - Testing manual y automatizado
+
+## Licencia
+
+Este proyecto está licenciado bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
+
+## Contacto
+
+Para preguntas o soporte, por favor contacta a nuestro equipo en support@bullabank.com
