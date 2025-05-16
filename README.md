@@ -39,7 +39,13 @@ npm install
 
 - Crea un proyecto en [Firebase Console](https://console.firebase.google.com/)
 - Habilita Authentication y Firestore en tu proyecto
-- Crea un archivo `.env` en la raíz del proyecto con las siguientes variables:
+- Copia el archivo `.env.example` a un nuevo archivo llamado `.env`:
+
+```bash
+cp .env.example .env
+```
+
+- Abre el archivo `.env` y reemplaza los valores de ejemplo con tus credenciales de Firebase:
 
 ```
 VITE_FIREBASE_API_KEY=tu-api-key
@@ -48,7 +54,10 @@ VITE_FIREBASE_PROJECT_ID=tu-project-id
 VITE_FIREBASE_STORAGE_BUCKET=tu-storage-bucket
 VITE_FIREBASE_MESSAGING_SENDER_ID=tu-messaging-sender-id
 VITE_FIREBASE_APP_ID=tu-app-id
+VITE_FIREBASE_MEASUREMENT_ID=tu-measurement-id
 ```
+
+> **Nota de seguridad**: El archivo `.env` contiene información sensible y está configurado para ser ignorado por Git en el archivo `.gitignore`. Nunca compartas o subas este archivo a repositorios públicos.
 
 ## Ejecución local
 
