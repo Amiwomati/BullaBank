@@ -97,35 +97,3 @@ bullabank/
 ├── .env                # Variables de entorno (no incluido en el repositorio)
 └── package.json        # Dependencias y scripts
 ```
-
-## Equipo de desarrollo
-
-### Liderazgo
-
-- **María Pérez** - _CEO & Fundadora_ - Visión estratégica y dirección del proyecto
-- **Carlos Rodríguez** - _CTO_ - Arquitectura técnica y decisiones tecnológicas
-
-### Desarrollo Frontend
-
-- **Ana González** - _Lead Frontend Developer_ - Especialista en React y diseño de UI/UX
-- **Juan Martínez** - _Frontend Developer_ - Implementación de componentes y testing
-- **Sofía López** - _UI/UX Designer_ - Diseño visual y experiencia de usuario
-
-### Desarrollo Backend
-
-- **Diego Sánchez** - _Lead Backend Developer_ - Especialista en Firebase y seguridad
-- **Valentina Torres** - _Backend Developer_ - Integración de APIs y bases de datos
-- **Mateo Fernández** - _DevOps Engineer_ - Infraestructura y despliegue
-
-### Calidad y Testing
-
-- **Lucía Ramírez** - _QA Lead_ - Estrategia de pruebas y control de calidad
-- **Gabriel Castro** - _QA Analyst_ - Testing manual y automatizado
-
-## Licencia
-
-Este proyecto está licenciado bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
-
-## Contacto
-
-Para preguntas o soporte, por favor contacta a nuestro equipo en support@bullabank.com
