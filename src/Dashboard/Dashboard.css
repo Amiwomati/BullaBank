@@ -6,8 +6,8 @@
   --secondary-color: #00a86b;
   --secondary-dark: #007a4d;
   --accent-color: #ffc107;
-  --text-primary: #333333;
-  --text-secondary: #666666;
+  --text-primary: #ffffff;
+  --text-secondary: #ffffff;
   --text-light: #999999;
   --background-light: #f8f9fa;
   --background-white: #ffffff;
@@ -305,6 +305,31 @@ button {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: var(--spacing-lg);
 }
+.modal-body {
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.transfer-modal {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+}
 
 .account-card {
   background-color: var(--background-white);
@@ -431,8 +456,9 @@ button {
 .action-card span {
   font-size: 14px;
   font-weight: 600;
-  color: var(--text-primary);
+  color: black; /* Cambiado a negro */
 }
+
 
 /* Transacciones recientes */
 .transactions-list {
