@@ -2,11 +2,12 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./Firebase/client";
+
 import Dashboard from "./Dashboard/Dashboard";
+import InvestmentDashboard from "./components/InvestmentDashboard";
 import RegisterScreen from "./RegisterScreen/RegisterScreen";
 import ResetPasswordScreen from "./ResetPasswordScreen/ResetPasswordScreen";
 
-// Protected route component
 const ProtectedRoute = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -37,6 +38,14 @@ function App() {
         element={
           <ProtectedRoute>
             <Dashboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/inversiones"
+        element={
+          <ProtectedRoute>
+            <InvestmentDashboard />
           </ProtectedRoute>
         }
       />

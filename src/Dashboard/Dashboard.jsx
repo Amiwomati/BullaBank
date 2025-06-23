@@ -211,9 +211,14 @@ const Dashboard = () => {
 
         <nav className="sidebar-nav">
           <ul>
-            <li className={activeSection === "home" ? "active" : ""}>
-              <button onClick={() => setActiveSection("home")}>
-                <i className="icon-home"></i> Inicio
+            <li className={activeSection === "dashboard" ? "active" : ""}>
+              <button
+                onClick={() => {
+                  setActiveSection("dashboard");
+                  navigate("/dashboard");
+                }}
+              >
+                📊 Inicio
               </button>
             </li>
             <li className={activeSection === "accounts" ? "active" : ""}>
@@ -231,8 +236,8 @@ const Dashboard = () => {
                 <i className="icon-payments"></i> Pagos
               </button>
             </li>
-            <li className={activeSection === "investments" ? "active" : ""}>
-              <button onClick={() => setActiveSection("investments")}>
+            <li>
+              <button onClick={() => navigate("/inversiones")}>
                 <i className="icon-investments"></i> Inversiones
               </button>
             </li>
@@ -359,9 +364,8 @@ const Dashboard = () => {
               {transactions.map((transaction) => (
                 <div
                   key={transaction.id}
-                  className={`transaction-item ${
-                    transaction.amount < 0 ? "outgoing" : "incoming"
-                  }`}
+                  className={`transaction-item ${transaction.amount < 0 ? "outgoing" : "incoming"
+                    }`}
                 >
                   <div className="transaction-icon">
                     <i className={`icon-${transaction.type}`}></i>

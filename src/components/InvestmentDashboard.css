@@ -1,0 +1,132 @@
+/* InvestmentDashboard.css */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0e1525;
+  color: #e0e0e0; 
+}
+
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #1b2133;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar h2 {
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar nav li {
+  margin: 1rem 0;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.sidebar nav li.active,
+.sidebar nav li:hover {
+  background-color: #2a3147;
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.sidebar-accounts h4 {
+  color: #ccc;
+  margin-top: 2rem;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+}
+
+.sidebar-footer button {
+  background-color: #e63946;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 2rem;
+  background-color: #0e1525;
+}
+
+.dashboard-header h1 {
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.chart-section {
+  background-color: #1b2133;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  color: #e0e0e0;
+}
+
+.transactions,
+.investment-summary {
+  background-color: #1b2133;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  color: #e0e0e0;
+}
+
+.transactions ul {
+  list-style: none;
+  padding: 0;
+}
+
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #2a3147;
+  color: #e0e0e0;
+}
+
+.investment-cards {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.investment-card {
+  background-color: #2a3147;
+  padding: 1rem;
+  border-radius: 12px;
+  width: 250px;
+  flex-shrink: 0;
+  color: #e0e0e0;
+}
+
+.positive {
+  color: #2ecc71;
+}
+
+.negative {
+  color: #e74c3c;
+}
+.investment-card h3 {
+  margin: 0 0 0.5rem;
+  color: #ffffff;
+}
