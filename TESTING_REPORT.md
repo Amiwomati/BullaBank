@@ -7,6 +7,7 @@ Se han implementado pruebas unitarias completas para la aplicación BullaBank ut
 ### 1. Funciones Utilitarias (bankUtils.js) ✅
 
 **Funciones probadas:**
+
 - `formatCurrency()` - Formateo de montos en pesos chilenos
 - `validateRUT()` - Validación de RUT chileno
 - `validateTransferAmount()` - Validación de montos de transferencia
@@ -16,6 +17,7 @@ Se han implementado pruebas unitarias completas para la aplicación BullaBank ut
 **Cobertura:** 100% de líneas, 97.05% de ramas, 100% de funciones
 
 **Casos de prueba incluidos:**
+
 - Formato correcto de monedas positivas y negativas
 - Manejo de números decimales y cero
 - Validación de errores para entradas inválidas
@@ -27,6 +29,7 @@ Se han implementado pruebas unitarias completas para la aplicación BullaBank ut
 ### 2. Componente LoginScreen ✅
 
 **Funcionalidades probadas:**
+
 - Renderizado correcto del formulario
 - Validación de campos vacíos
 - Manejo de cambios en inputs
@@ -40,6 +43,7 @@ Se han implementado pruebas unitarias completas para la aplicación BullaBank ut
 ### 3. Componente Dashboard ✅
 
 **Funcionalidades probadas:**
+
 - Renderizado de información del usuario
 - Navegación del sidebar
 - Renderizado de tarjetas de cuentas
@@ -55,6 +59,7 @@ Se han implementado pruebas unitarias completas para la aplicación BullaBank ut
 ## Configuración del Entorno de Pruebas
 
 ### Dependencias Instaladas:
+
 ```json
 {
   "jest": "^30.0.4",
@@ -72,16 +77,19 @@ Se han implementado pruebas unitarias completas para la aplicación BullaBank ut
 ### Archivos de Configuración:
 
 **jest.config.json:**
+
 - Entorno jsdom para pruebas de React
 - Configuración de transformaciones Babel
 - Patrones de archivos de prueba
 - Configuración de cobertura
 
 **babel.config.json:**
+
 - Presets para ES6 y React
 - Configuración para entorno Node
 
 **setupTests.js:**
+
 - Mocks para Firebase
 - Mocks para react-router-dom
 - Configuración de localStorage/sessionStorage
