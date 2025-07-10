@@ -6,10 +6,10 @@
  * @returns {string} - Monto formateado en CLP
  */
 export const formatCurrency = (amount) => {
-  if (typeof amount !== 'number') {
-    throw new Error('El monto debe ser un número');
+  if (typeof amount !== "number") {
+    throw new Error("El monto debe ser un número");
   }
-  
+
   return new Intl.NumberFormat("es-CL", {
     style: "currency",
     currency: "CLP",
@@ -23,13 +23,13 @@ export const formatCurrency = (amount) => {
  * @returns {boolean} - True si es válido, false si no
  */
 export const validateRUT = (rut) => {
-  if (!rut || typeof rut !== 'string') {
+  if (!rut || typeof rut !== "string") {
     return false;
   }
 
   // Limpiar el RUT
-  const cleanRut = rut.replace(/\./g, '').replace(/\-/g, '');
-  
+  const cleanRut = rut.replace(/\./g, "").replace(/\-/g, "");
+
   if (cleanRut.length < 8 || cleanRut.length > 9) {
     return false;
   }
@@ -45,15 +45,15 @@ export const validateRUT = (rut) => {
   // Calcular dígito verificador
   let sum = 0;
   let multiplier = 2;
-  
+
   for (let i = body.length - 1; i >= 0; i--) {
     sum += parseInt(body[i]) * multiplier;
     multiplier = multiplier === 7 ? 2 : multiplier + 1;
   }
-  
+
   const remainder = sum % 11;
-  const calculatedCheckDigit = remainder < 2 ? remainder.toString() : 'k';
-  
+  const calculatedCheckDigit = remainder < 2 ? remainder.toString() : "k";
+
   return checkDigit === calculatedCheckDigit;
 };
 
@@ -65,45 +65,50 @@ export const validateRUT = (rut) => {
  * @param {number} maxAmount - Monto máximo permitido (default: 10000000)
  * @returns {object} - Objeto con isValid y mensaje de error si aplica
  */
-export const validateTransferAmount = (amount, availableBalance, minAmount = 1000, maxAmount = 10000000) => {
-  if (typeof amount !== 'number' || typeof availableBalance !== 'number') {
+export const validateTransferAmount = (
+  amount,
+  availableBalance,
+  minAmount = 1000,
+  maxAmount = 10000000
+) => {
+  if (typeof amount !== "number" || typeof availableBalance !== "number") {
     return {
       isValid: false,
-      error: 'Los montos deben ser números válidos'
+      error: "Los montos deben ser números válidos",
     };
   }
 
   if (amount <= 0) {
     return {
       isValid: false,
-      error: 'El monto debe ser mayor a cero'
+      error: "El monto debe ser mayor a cero",
     };
   }
 
   if (amount < minAmount) {
     return {
       isValid: false,
-      error: `El monto mínimo es ${formatCurrency(minAmount)}`
+      error: `El monto mínimo es ${formatCurrency(minAmount)}`,
     };
   }
 
   if (amount > maxAmount) {
     return {
       isValid: false,
-      error: `El monto máximo es ${formatCurrency(maxAmount)}`
+      error: `El monto máximo es ${formatCurrency(maxAmount)}`,
     };
   }
 
   if (amount > availableBalance) {
     return {
       isValid: false,
-      error: 'Saldo insuficiente'
+      error: "Saldo insuficiente",
     };
   }
 
   return {
     isValid: true,
-    error: null
+    error: null,
   };
 };
 
@@ -114,8 +119,11 @@ export const validateTransferAmount = (amount, availableBalance, minAmount = 100
  * @returns {number} - Nuevo saldo
  */
 export const calculateNewBalance = (currentBalance, transferAmount) => {
-  if (typeof currentBalance !== 'number' || typeof transferAmount !== 'number') {
-    throw new Error('Los montos deben ser números válidos');
+  if (
+    typeof currentBalance !== "number" ||
+    typeof transferAmount !== "number"
+  ) {
+    throw new Error("Los montos deben ser números válidos");
   }
 
   return currentBalance - transferAmount;

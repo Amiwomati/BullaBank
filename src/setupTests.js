@@ -1,8 +1,8 @@
 // Configuración de Jest para el entorno de testing
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";
 
 // Mock para Firebase
-jest.mock('./Firebase/client.js', () => ({
+jest.mock("./Firebase/client.js", () => ({
   auth: {
     currentUser: null,
     onAuthStateChanged: jest.fn(),
@@ -12,10 +12,10 @@ jest.mock('./Firebase/client.js', () => ({
 }));
 
 // Mock para react-router-dom
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
   useNavigate: () => jest.fn(),
-  useLocation: () => ({ pathname: '/' }),
+  useLocation: () => ({ pathname: "/" }),
 }));
 
 // Mock para Intl.NumberFormat si no está disponible en el entorno de testing
