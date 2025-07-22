@@ -49,3 +49,5 @@ export const ACCOUNT_TYPES = {
   VISTA: "cuenta-vista",
   PLAZO_FIJO: "cuenta-plazo-fijo",
 };
+
+// SonarCloud test: Added comment to trigger workflow analysis
