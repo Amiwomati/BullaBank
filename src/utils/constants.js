@@ -50,4 +50,6 @@ export const ACCOUNT_TYPES = {
   PLAZO_FIJO: "cuenta-plazo-fijo",
 };
 
+// SonarCloud test: Triggering workflow analysis - Date: 2025-07-22
+
 // SonarCloud test: Added comment to trigger workflow analysis
