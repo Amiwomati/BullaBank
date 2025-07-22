@@ -86,7 +86,7 @@ const LoginScreen = () => {
     <div className="login-container">
       <div className="login-form-container">
         <div className="login-header">
-          <h1>Bienvenido a BullaBank</h1>
+          <h1>¡Bienvenido a BullaBank!</h1>
           <p>Ingrese sus credenciales para acceder a su cuenta</p>
         </div>
 
