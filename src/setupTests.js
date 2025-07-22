@@ -1,6 +1,11 @@
 // Configuración de Jest para el entorno de testing
 import "@testing-library/jest-dom";
 
+// Polyfill para TextEncoder/TextDecoder en Node.js
+import { TextEncoder, TextDecoder } from "util";
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;
+
 // Mock para Firebase
 jest.mock("./Firebase/client.js", () => ({
   auth: {

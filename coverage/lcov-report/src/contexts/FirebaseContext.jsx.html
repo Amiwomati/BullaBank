@@ -258,7 +258,14 @@
 <a name='L193'></a><a href='#L193'>193</a>
 <a name='L194'></a><a href='#L194'>194</a>
 <a name='L195'></a><a href='#L195'>195</a>
-<a name='L196'></a><a href='#L196'>196</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a>
+<a name='L200'></a><a href='#L200'>200</a>
+<a name='L201'></a><a href='#L201'>201</a>
+<a name='L202'></a><a href='#L202'>202</a>
+<a name='L203'></a><a href='#L203'>203</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -281,6 +288,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -299,9 +307,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -309,8 +315,12 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -446,32 +456,37 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { createContext, useContext, useState, useEffect } from "react";
-import { 
-  createUserWithEmailAndPassword, 
-  signInWithEmailAndPassword, 
-  signOut, 
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { createContext, useContext, useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
   sendPasswordResetEmail,
-  onAuthStateChanged
+  onAuthStateChanged,
 } from "firebase/auth";
-import { 
-  collection, 
-  doc, 
-  setDoc, 
-  getDoc, 
-  getDocs, 
-  addDoc, 
-  updateDoc, 
-  deleteDoc, 
-  query, 
-  where 
+import {
+  collection,
+  doc,
+  setDoc,
+  getDoc,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  query,
+  where,
 } from "firebase/firestore";
 import { auth, db } from "../Firebase/client";
 &nbsp;
@@ -491,27 +506,29 @@ export const FirebaseProvider = <span class="cstat-no" title="statement not cove
 &nbsp;
   // Listen for auth state changes
 <span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-    const unsubscribe = <span class="cstat-no" title="statement not covered" >onAuthStateChanged(auth, <span class="fstat-no" title="function not covered" >(u</span>ser) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    return onAuthStateChanged(auth, <span class="fstat-no" title="function not covered" >(u</span>ser) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      setCurrentUser(user);</span>
 <span class="cstat-no" title="statement not covered" >      setLoading(false);</span>
     });
-&nbsp;
-<span class="cstat-no" title="statement not covered" >    return unsubscribe;</span>
   }, []);
 &nbsp;
   // Authentication functions
   const signup = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync (email, password, userData = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    try {</span>
 <span class="cstat-no" title="statement not covered" >      setError("");</span>
-      const userCredential = <span class="cstat-no" title="statement not covered" >await createUserWithEmailAndPassword(auth, email, password);</span>
-      
+      const userCredential = <span class="cstat-no" title="statement not covered" >await createUserWithEmailAndPassword(</span>
+        auth,
+        email,
+        password
+      );
+&nbsp;
       // Create a user document in Firestore
 <span class="cstat-no" title="statement not covered" >      await setDoc(doc(db, "users", userCredential.user.uid), {</span>
         email: email,
         createdAt: new Date(),
-        ...userData
+        ...userData,
       });
-      
+&nbsp;
 <span class="cstat-no" title="statement not covered" >      return userCredential.user;</span>
     } catch (err) {
 <span class="cstat-no" title="statement not covered" >      setError(err.message);</span>
@@ -554,7 +571,7 @@ export const FirebaseProvider = <span class="cstat-no" title="statement not cove
 <span class="cstat-no" title="statement not covered" >    try {</span>
 <span class="cstat-no" title="statement not covered" >      return await addDoc(collection(db, collectionPath), {</span>
         ...data,
-        createdAt: new Date()
+        createdAt: new Date(),
       });
     } catch (err) {
 <span class="cstat-no" title="statement not covered" >      setError(err.message);</span>
@@ -566,7 +583,7 @@ export const FirebaseProvider = <span class="cstat-no" title="statement not cove
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const docRef = <span class="cstat-no" title="statement not covered" >doc(db, collectionPath, docId);</span>
       const docSnap = <span class="cstat-no" title="statement not covered" >await getDoc(docRef);</span>
-      
+&nbsp;
 <span class="cstat-no" title="statement not covered" >      if (docSnap.exists()) {</span>
 <span class="cstat-no" title="statement not covered" >        return { id: docSnap.id, ...docSnap.data() };</span>
       } else {
@@ -581,20 +598,20 @@ export const FirebaseProvider = <span class="cstat-no" title="statement not cove
   const getCollection = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync (collectionPath, conditions = <span class="branch-0 cbranch-no" title="branch not covered" >[])</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    try {</span>
       let q;
-      
+&nbsp;
 <span class="cstat-no" title="statement not covered" >      if (conditions.length &gt; 0) {</span>
-        const queryConstraints = <span class="cstat-no" title="statement not covered" >conditions.map(<span class="fstat-no" title="function not covered" >co</span>ndition =&gt; </span>
+        const queryConstraints = <span class="cstat-no" title="statement not covered" >conditions.map(<span class="fstat-no" title="function not covered" >(c</span>ondition) =&gt;</span>
 <span class="cstat-no" title="statement not covered" >          where(condition.field, condition.operator, condition.value)</span>
         );
 <span class="cstat-no" title="statement not covered" >        q = query(collection(db, collectionPath), ...queryConstraints);</span>
       } else {
 <span class="cstat-no" title="statement not covered" >        q = collection(db, collectionPath);</span>
       }
-      
+&nbsp;
       const querySnapshot = <span class="cstat-no" title="statement not covered" >await getDocs(q);</span>
-<span class="cstat-no" title="statement not covered" >      return querySnapshot.docs.map(<span class="fstat-no" title="function not covered" >do</span>c =&gt; (<span class="cstat-no" title="statement not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" >      return querySnapshot.docs.map(<span class="fstat-no" title="function not covered" >(d</span>oc) =&gt; (<span class="cstat-no" title="statement not covered" >{</span></span>
         id: doc.id,
-        ...doc.data()
+        ...doc.data(),
       }));
     } catch (err) {
 <span class="cstat-no" title="statement not covered" >      setError(err.message);</span>
@@ -607,7 +624,7 @@ export const FirebaseProvider = <span class="cstat-no" title="statement not cove
       const docRef = <span class="cstat-no" title="statement not covered" >doc(db, collectionPath, docId);</span>
 <span class="cstat-no" title="statement not covered" >      return await updateDoc(docRef, {</span>
         ...data,
-        updatedAt: new Date()
+        updatedAt: new Date(),
       });
     } catch (err) {
 <span class="cstat-no" title="statement not covered" >      setError(err.message);</span>
@@ -637,7 +654,7 @@ export const FirebaseProvider = <span class="cstat-no" title="statement not cove
     getDocument,
     getCollection,
     updateDocument,
-    deleteDocument
+    deleteDocument,
   };
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
@@ -645,6 +662,10 @@ export const FirebaseProvider = <span class="cstat-no" title="statement not cove
       {!loading &amp;&amp; children}
     &lt;/FirebaseContext.Provider&gt;
   );
+};
+&nbsp;
+<span class="cstat-no" title="statement not covered" >FirebaseProvider.propTypes = {</span>
+  children: PropTypes.node.isRequired,
 };
 &nbsp;
 export default FirebaseContext;
@@ -655,7 +676,7 @@ export default FirebaseContext;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-07-04T01:17:28.383Z
+                at 2025-07-22T04:54:40.362Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
