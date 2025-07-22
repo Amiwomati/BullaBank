@@ -5,6 +5,7 @@ import {
   calculateNewBalance,
   generateTransactionId,
 } from "../utils/bankUtils";
+import { TEST_CONSTANTS } from "../utils/constants";
 
 describe("formatCurrency", () => {
   test("should format positive numbers correctly", () => {
@@ -114,11 +115,11 @@ describe("validateTransferAmount", () => {
   test("should reject non-numeric inputs", () => {
     const result1 = validateTransferAmount("5000", 10000);
     expect(result1.isValid).toBe(false);
-    expect(result1.error).toBe("Los montos deben ser números válidos");
+    expect(result1.error).toBe(TEST_CONSTANTS.NUMERIC_ERROR);
 
     const result2 = validateTransferAmount(5000, "10000");
     expect(result2.isValid).toBe(false);
-    expect(result2.error).toBe("Los montos deben ser números válidos");
+    expect(result2.error).toBe(TEST_CONSTANTS.NUMERIC_ERROR);
   });
 });
 

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFirebase } from "../contexts/FirebaseContext";
+import { CSS_CLASSES, ACCOUNT_TYPES } from "../utils/constants";
 import "./Dashboard.css";
 
 const Dashboard = () => {
@@ -14,33 +15,33 @@ const Dashboard = () => {
   const [showTransferModal, setShowTransferModal] = useState(false);
 
   const navigate = useNavigate();
-  const { currentUser, logout, getCollection, createDocument } = useFirebase();
+  const { currentUser, logout } = useFirebase();
 
   // Cargar datos cuando el componente se monta
   useEffect(() => {
     if (currentUser) {
-      loadUserData(currentUser.uid);
+      loadUserData();
     } else {
       setLoading(false);
     }
   }, [currentUser]);
 
   // Cargar datos del usuario desde Firestore
-  const loadUserData = async (userId) => {
+  const loadUserData = async () => {
     try {
       setLoading(true);
 
       // Cargar cuentas (simuladas por ahora)
       setAccounts([
         {
-          id: "cuenta-corriente",
+          id: ACCOUNT_TYPES.CORRIENTE,
           type: "Cuenta Corriente",
           number: "0012-3456-7890-1234",
           balance: 1250000,
           currency: "CLP",
         },
         {
-          id: "cuenta-ahorro",
+          id: ACCOUNT_TYPES.AHORRO,
           type: "Cuenta de Ahorro",
           number: "0012-3456-7890-5678",
           balance: 3750000,

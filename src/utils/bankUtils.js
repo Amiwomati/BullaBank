@@ -28,7 +28,7 @@ export const validateRUT = (rut) => {
   }
 
   // Limpiar el RUT
-  const cleanRut = rut.replace(/\./g, "").replace(/\-/g, "");
+  const cleanRut = rut.replace(/\./g, "").replace(/-/g, "");
 
   if (cleanRut.length < 8 || cleanRut.length > 9) {
     return false;
