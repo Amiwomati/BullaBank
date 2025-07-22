@@ -1,24 +1,25 @@
-# SonarQube Quality Gate Configuration
+# SonarCloud Quality Gate Configuration
 
-name: SonarQube Quality Gate
+name: SonarCloud Quality Gate
 on:
   push:
-    branches: [main, develop, mpavez/AddSonarQ]
+    branches: [master, main, develop]
   pull_request:
-    branches: [main, develop]
+    branches: [master, main, develop]
 
 jobs:
-  sonarqube:
+  sonarcloud:
+    name: SonarCloud Analysis
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: "18"
           cache: "npm"
@@ -28,22 +29,14 @@ jobs:
 
       - name: Run tests with coverage
         run: npm run test:coverage
+        env:
+          CI: true
 
       - name: Run ESLint
-        run: npm run lint:sonar
+        run: npm run lint
 
-      - name: SonarQube Scan
-        uses: sonarqube-quality-gate-action@master
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        with:
-          scannerVersion: latest
-
-      - name: Quality Gate Check
-        uses: sonarqube-quality-gate-action@master
-        timeout-minutes: 5
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
