@@ -1,22 +1,23 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
-import { 
-  createUserWithEmailAndPassword, 
-  signInWithEmailAndPassword, 
-  signOut, 
+import { createContext, useContext, useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
   sendPasswordResetEmail,
-  onAuthStateChanged
+  onAuthStateChanged,
 } from "firebase/auth";
-import { 
-  collection, 
-  doc, 
-  setDoc, 
-  getDoc, 
-  getDocs, 
-  addDoc, 
-  updateDoc, 
-  deleteDoc, 
-  query, 
-  where 
+import {
+  collection,
+  doc,
+  setDoc,
+  getDoc,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  query,
+  where,
 } from "firebase/firestore";
 import { auth, db } from "../Firebase/client";
 
@@ -36,27 +37,29 @@ export const FirebaseProvider = ({ children }) => {
 
   // Listen for auth state changes
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    return onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
       setLoading(false);
     });
-
-    return unsubscribe;
   }, []);
 
   // Authentication functions
   const signup = async (email, password, userData = {}) => {
     try {
       setError("");
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
       // Create a user document in Firestore
       await setDoc(doc(db, "users", userCredential.user.uid), {
         email: email,
         createdAt: new Date(),
-        ...userData
+        ...userData,
       });
-      
+
       return userCredential.user;
     } catch (err) {
       setError(err.message);
@@ -99,7 +102,7 @@ export const FirebaseProvider = ({ children }) => {
     try {
       return await addDoc(collection(db, collectionPath), {
         ...data,
-        createdAt: new Date()
+        createdAt: new Date(),
       });
     } catch (err) {
       setError(err.message);
@@ -111,7 +114,7 @@ export const FirebaseProvider = ({ children }) => {
     try {
       const docRef = doc(db, collectionPath, docId);
       const docSnap = await getDoc(docRef);
-      
+
       if (docSnap.exists()) {
         return { id: docSnap.id, ...docSnap.data() };
       } else {
@@ -126,20 +129,20 @@ export const FirebaseProvider = ({ children }) => {
   const getCollection = async (collectionPath, conditions = []) => {
     try {
       let q;
-      
+
       if (conditions.length > 0) {
-        const queryConstraints = conditions.map(condition => 
+        const queryConstraints = conditions.map((condition) =>
           where(condition.field, condition.operator, condition.value)
         );
         q = query(collection(db, collectionPath), ...queryConstraints);
       } else {
         q = collection(db, collectionPath);
       }
-      
+
       const querySnapshot = await getDocs(q);
-      return querySnapshot.docs.map(doc => ({
+      return querySnapshot.docs.map((doc) => ({
         id: doc.id,
-        ...doc.data()
+        ...doc.data(),
       }));
     } catch (err) {
       setError(err.message);
@@ -152,7 +155,7 @@ export const FirebaseProvider = ({ children }) => {
       const docRef = doc(db, collectionPath, docId);
       return await updateDoc(docRef, {
         ...data,
-        updatedAt: new Date()
+        updatedAt: new Date(),
       });
     } catch (err) {
       setError(err.message);
@@ -182,7 +185,7 @@ export const FirebaseProvider = ({ children }) => {
     getDocument,
     getCollection,
     updateDocument,
-    deleteDocument
+    deleteDocument,
   };
 
   return (
@@ -190,6 +193,10 @@ export const FirebaseProvider = ({ children }) => {
       {!loading && children}
     </FirebaseContext.Provider>
   );
+};
+
+FirebaseProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default FirebaseContext;

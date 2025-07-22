@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
+import PropTypes from "prop-types";
 import { auth } from "./Firebase/client";
 import Dashboard from "./Dashboard/Dashboard";
 import RegisterScreen from "./RegisterScreen/RegisterScreen";
@@ -27,6 +28,10 @@ const ProtectedRoute = ({ children }) => {
   }
 
   return children;
+};
+
+ProtectedRoute.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 function App() {

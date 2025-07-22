@@ -1,7 +1,7 @@
-import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import LoginScreen from "../LoginScreen/loginScreen";
+import { TEST_CONSTANTS } from "../utils/constants";
 
 // Mock de Firebase Auth
 jest.mock("../Firebase/client.js", () => ({
@@ -38,26 +38,34 @@ describe("LoginScreen", () => {
   test("should render login form correctly", () => {
     renderLoginScreen();
 
-    expect(screen.getByText("Bienvenido a BullaBank")).toBeInTheDocument();
+    expect(
+      screen.getByText(TEST_CONSTANTS.WELCOME_MESSAGE)
+    ).toBeInTheDocument();
     expect(
       screen.getByText("Ingrese sus credenciales para acceder a su cuenta")
     ).toBeInTheDocument();
-    expect(screen.getByLabelText("Correo Electrónico")).toBeInTheDocument();
-    expect(screen.getByLabelText("Contraseña")).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: "Iniciar Sesión" })
+      screen.getByLabelText(TEST_CONSTANTS.EMAIL_LABEL)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByLabelText(TEST_CONSTANTS.PASSWORD_LABEL)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: TEST_CONSTANTS.LOGIN_BUTTON_TEXT })
     ).toBeInTheDocument();
   });
 
   test("should show error when fields are empty", async () => {
     renderLoginScreen();
 
-    const submitButton = screen.getByRole("button", { name: "Iniciar Sesión" });
+    const submitButton = screen.getByRole("button", {
+      name: TEST_CONSTANTS.LOGIN_BUTTON_TEXT,
+    });
     fireEvent.click(submitButton);
 
     await waitFor(() => {
       expect(
-        screen.getByText("Por favor complete todos los campos")
+        screen.getByText(TEST_CONSTANTS.EMPTY_FIELDS_ERROR)
       ).toBeInTheDocument();
     });
   });
@@ -65,14 +73,18 @@ describe("LoginScreen", () => {
   test("should handle input changes correctly", () => {
     renderLoginScreen();
 
-    const emailInput = screen.getByLabelText("Correo Electrónico");
-    const passwordInput = screen.getByLabelText("Contraseña");
+    const emailInput = screen.getByLabelText(TEST_CONSTANTS.EMAIL_LABEL);
+    const passwordInput = screen.getByLabelText(TEST_CONSTANTS.PASSWORD_LABEL);
 
-    fireEvent.change(emailInput, { target: { value: "test@example.com" } });
-    fireEvent.change(passwordInput, { target: { value: "password123" } });
+    fireEvent.change(emailInput, {
+      target: { value: TEST_CONSTANTS.VALID_EMAIL },
+    });
+    fireEvent.change(passwordInput, {
+      target: { value: TEST_CONSTANTS.VALID_PASSWORD },
+    });
 
-    expect(emailInput.value).toBe("test@example.com");
-    expect(passwordInput.value).toBe("password123");
+    expect(emailInput.value).toBe(TEST_CONSTANTS.VALID_EMAIL);
+    expect(passwordInput.value).toBe(TEST_CONSTANTS.VALID_PASSWORD);
   });
 
   test("should handle remember me checkbox", () => {

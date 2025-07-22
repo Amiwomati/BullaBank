@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useFirebase } from "../contexts/FirebaseContext";
+import { VALIDATION_MESSAGES } from "../utils/constants";
 import "./loginScreen.css";
 
 const LoginScreen = () => {

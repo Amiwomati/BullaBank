@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useFirebase } from "../contexts/FirebaseContext";
+import { VALIDATION_MESSAGES } from "../utils/constants";
 import "./RegisterScreen.css";
 
 const RegisterScreen = () => {
@@ -10,7 +11,7 @@ const RegisterScreen = () => {
   const [name, setName] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  
+
   const navigate = useNavigate();
   const { signup } = useFirebase();
 
@@ -39,12 +40,12 @@ const RegisterScreen = () => {
 
       // Registrar usuario con Firebase
       await signup(email, password, { displayName: name });
-      
+
       // Redirigir al dashboard después del registro exitoso
       navigate("/dashboard");
     } catch (error) {
       console.error("Error de registro:", error);
-      
+
       // Manejo específico de errores de Firebase
       switch (error.code) {
         case "auth/email-already-in-use":

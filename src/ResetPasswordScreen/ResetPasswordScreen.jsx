@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useFirebase } from "../contexts/FirebaseContext";
+import { VALIDATION_MESSAGES } from "../utils/constants";
 import "./ResetPasswordScreen.css";
 
 const ResetPasswordScreen = () => {
@@ -8,8 +9,7 @@ const ResetPasswordScreen = () => {
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  
-  const navigate = useNavigate();
+
   const { resetPassword } = useFirebase();
 
   const handleSubmit = async (e) => {
@@ -24,13 +24,15 @@ const ResetPasswordScreen = () => {
       setLoading(true);
       setError("");
       setMessage("");
-      
+
       await resetPassword(email);
-      
-      setMessage("Se ha enviado un correo electrónico con instrucciones para restablecer su contraseña");
+
+      setMessage(
+        "Se ha enviado un correo electrónico con instrucciones para restablecer su contraseña"
+      );
     } catch (error) {
       console.error("Error al restablecer contraseña:", error);
-      
+
       switch (error.code) {
         case "auth/invalid-email":
           setError("Formato de correo electrónico inválido");
@@ -39,7 +41,9 @@ const ResetPasswordScreen = () => {
           setError("No existe una cuenta con este correo electrónico");
           break;
         default:
-          setError("Error al enviar el correo de restablecimiento. Por favor intente nuevamente");
+          setError(
+            "Error al enviar el correo de restablecimiento. Por favor intente nuevamente"
+          );
       }
     } finally {
       setLoading(false);
@@ -77,7 +81,9 @@ const ResetPasswordScreen = () => {
         </form>
 
         <div className="links-container">
-          <Link to="/login" className="back-link">Volver a Iniciar Sesión</Link>
+          <Link to="/login" className="back-link">
+            Volver a Iniciar Sesión
+          </Link>
         </div>
       </div>
     </div>
