@@ -1,4 +1,5 @@
 # SonarCloud Quality Gate Configuration
+# Workflow updated for SonarCloud integration with proper secret configuration
 
 name: SonarCloud Quality Gate
 on:
